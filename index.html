@@ -5,6 +5,75 @@
     <title>MSI2020 test</title>
 </head>
 <body>
-
+<main class="wrapper">
+    <section class="find-jokes">
+        <h1 class="find-jokes__header">MSI2020</h1>
+        <h2 class="find-jokes__title">Hey!</h2>
+        <h3 class="find-jokes__subtitle">Let’s try to find a joke for you:</h3>
+        <div class="find-jokes__radio radio-main">
+            <div class="radio-main__item">
+                <input type="radio" name="radio-main" id="radio-random">
+                <label for="radio-random">Random</label>
+            </div>
+            <div class="radio-main__item">
+                <input type="radio" name="radio-main" id="radio-category">
+                <label for="radio-category">From caterogies</label>
+            </div>
+            <div class="radio-main__categories categories">
+                <input type="radio" name="radio-category" id="category-animal">
+                <label for="category-animal">animal</label>
+                <input type="radio" name="radio-category" id="category-career">
+                <label for="category-career">career</label>
+                <input type="radio" name="radio-category" id="category-celebrity">
+                <label for="category-celebrity">celebrity</label>
+                <input type="radio" name="radio-category" id="category-dev">
+                <label for="category-dev">dev</label>
+            </div>
+            <div class="radio-main__item">
+                <input type="radio" name="radio-main" id="radio-query">
+                <label for="radio-query">Search</label>
+            </div>
+            <input type="button" value="Get a joke" id="get-joke">
+        </div>
+        <div class="joke-card">
+            <div class="joke-card__header">heart</div>
+            <div class="joke-card__main joke-content">
+                <div class="joke-content__img">message</div>
+                <div class="joke-content__content">
+                    <h5>ID: XNaAxUduSw6zANDaIEab7A</h5>
+                    <p>
+                        No one truly knows who's Chuck Norris' real father. No one is biologically strong enough for this. He must've conceived himself.
+                    </p>
+                </div>
+            </div>
+            <div class="joke-card__footer">
+                <h5>Last update: 1923 hours ago</h5>
+                <h5>celebrity</h5>
+            </div>
+        </div>
+    </section>
+    <section class="favourite">
+        <h2 class="favourite__title">favourite</h2>
+        <div class="jokes-container">
+            <div class="joke-card">
+                <div class="joke-card__header">heart</div>
+                <div class="joke-card__main joke-content">
+                    <div class="joke-content__img">message</div>
+                    <div class="joke-content__content">
+                        <h5>ID: XNaAxUduSw6zANDaIEab7A</h5>
+                        <p>
+                            No one truly knows who's Chuck Norris' real father. No one is biologically strong enough for this. He must've conceived himself.
+                        </p>
+                    </div>
+                </div>
+                <div class="joke-card__footer">
+                    <h5>Last update: 1923 hours ago</h5>
+                    <h5>celebrity</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="index.js"></script>
 </body>
 </html>
