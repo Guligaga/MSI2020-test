@@ -1,0 +1,256 @@
+@font-face {
+    font-family: Roboto;
+    src: url("../assets/fonts/Roboto-Regular.ttf");
+}
+
+
+* {
+    font-family: Roboto, sans-serif;
+    color: #333333;
+}
+
+input:focus {
+    outline: none;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*---------------------jokes-------------------*/
+
+.find-jokes {
+    padding: 40px 140px;
+}
+
+.find-jokes__header {
+    margin: 0 0 78px 0;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+    color: #333333;
+}
+
+.find-jokes__title {
+    margin: 0;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 44px;
+}
+
+.find-jokes__subtitle {
+    margin: 0;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 44px;
+}
+
+.radio-main {
+    margin-bottom: 40px;
+}
+
+.radio-main__item {
+    margin: 10px 0;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+.radio-main__item label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding: 0 35px;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 26px;
+    user-select: none;
+}
+.radio-main__item label:before {
+    content: "";
+    display: inline-block;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    border: 2px solid #ABABAB;
+    border-radius: 50%;
+}
+
+.radio-main__item input[type=radio]:checked + label:before {
+    border: 2px solid #333333;
+    background: url("../assets/icons/dot.svg") center no-repeat;
+}
+
+.radio-main__categories {
+    /*display: none;*/
+    margin: 23px 0;
+    display: flex;
+}
+
+/*.categories__item {*/
+/*    border: 2px solid #F8F8F8;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 6px;*/
+/*    padding: 6px 15px;*/
+/*    margin-right: 10px;*/
+/*}*/
+
+.categories__item label {
+    box-sizing: border-box;
+    padding: 6px 15px;
+    margin-right: 10px;
+    border: 2px solid #F8F8F8;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ABABAB;
+    cursor: pointer;
+    user-select: none;
+}
+
+.categories__item input[type=radio]:checked + label {
+    background: #F8F8F8;
+    color: #333333;
+}
+
+.radio-main__query {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 20px 0;
+    padding: 10px 15px;
+    border: 2px solid #333333;
+    border-radius: 10px;
+    color: #333333;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.radio-main__query::placeholder {
+    color: #ABABAB;
+}
+
+.radio-main__btn {
+    box-sizing: border-box;
+    background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FFFFFF;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+.joke-card {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 67px 40px 40px 100px;
+    background: #F8F8F8;
+    border-radius: 20px;
+    position: relative;
+}
+
+
+.fa-heart {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 20px;
+    color: #FF6767;
+    cursor: pointer;
+}
+
+.joke-content__img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    /* padding: 0 10px; */
+    left: 40px;
+    top: 67px;
+    position: absolute;
+}
+
+.joke-content__img img {
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -48%);
+}
+
+.joke-content__link {
+    font-weight: 500;
+    font-size: 10px;
+    color: #ABABAB;
+}
+
+.joke-content__link a {
+    color: #8EA7FF;
+}
+
+.joke-content__link i {
+    color: #8EA7FF;
+}
+
+
+.joke-card__footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+/*---------------------favourite-------------------*/
+
+.favourite {
+    box-sizing: border-box;
+    padding: 40px;
+    background-color: #F8F8F8;
+}
+
+.favourite__header {
+    margin: 0 0 20px 0;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #ABABAB;
+}
+
+.joke-card-fav {
+    background: #FFFFFF;
+    border: 1px solid #F8F8F8;
+    box-sizing: border-box;
+    padding: 47px 20px 20px 80px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.joke-heart-fav {
+    top: 20px;
+    right: 20px;
+}
+
+.joke-message-fav {
+    top: 47px;
+    left: 20px;
+    background: #F8F8F8;
+}
+
+.joke-content__text-fav {
+    font-size: 14px;
+    left: 20px;
+}
+
+/*---------------------none-------------------*/
+
+.display-none {
+    display: none;
+}
