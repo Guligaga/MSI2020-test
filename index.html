@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MSI2020 test</title>
+    <link rel="stylesheet" href="./node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://kit.fontawesome.com/b31778a180.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<main class="wrapper">
+    <section class="find-jokes">
+        <div class="find-jokes__header">
+            <h1 class="find-jokes__main-title">MSI2020</h1>
+            <div class="fav-toggler">
+                <div class="fav-toggler__icon">
+                    <div class="fav-toggler__icon-content" id="horiz1"></div>
+<!--                    <div class="fav-toggler__icon-content" id="horiz2"></div>-->
+                </div>
+                <span class="fav-toggler__text">Favourite</span>
+            </div>
+        </div>
+        <h2 class="find-jokes__title">Hey!</h2>
+        <h3 class="find-jokes__subtitle">Let’s try to find a joke for you:</h3>
+        <div class="find-jokes__radio radio-main">
+            <div class="radio-main__item">
+                <input type="radio" name="radio-main" id="radio-random" checked>
+                <label for="radio-random">Random</label>
+            </div>
+            <div class="radio-main__item">
+                <input type="radio" name="radio-main" id="radio-category">
+                <label for="radio-category">From caterogies</label>
+            </div>
+            <div class="radio-main__categories categories display-none">
+                <div class="categories__item">
+                    <input type="radio" name="radio-category" id="category-animal" checked>
+                    <label for="category-animal">animal</label>
+                </div>
+                <div class="categories__item">
+                    <input type="radio" name="radio-category" id="category-career">
+                    <label for="category-career">career</label>
+                </div>
+                <div class="categories__item">
+                    <input type="radio" name="radio-category" id="category-celebrity">
+                    <label for="category-celebrity">celebrity</label>
+                </div>
+                <div class="categories__item">
+                    <input type="radio" name="radio-category" id="category-dev">
+                    <label for="category-dev">dev</label>
+                </div>
+            </div>
+            <div class="radio-main__item">
+                <input type="radio" name="radio-main" id="radio-query">
+                <label for="radio-query">Search</label>
+            </div>
+            <input type="text" name="search-query" placeholder="Free text search..." class="radio-main__query display-none">
+            <input type="button" value="Get a joke" id="get-joke" class="radio-main__btn">
+        </div>
+        <div class="joke-list">
+        </div>
+    </section>
+    <section class="favourite">
+        <h2 class="favourite__header">Favourite</h2>
+        <div class="joke-list-fav">
+        </div>
+    </section>
+</main>
+<script src="scripts/index.js"></script>
+</body>
+</html>
