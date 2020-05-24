@@ -2,35 +2,59 @@ const getJokeBtn = document.querySelector('#get-joke');
 const radioMain = document.querySelectorAll('input[name=radio-main]');
 const category = document.querySelectorAll('input[name=radio-category]');
 const hearts = document.querySelectorAll('.fa-heart');
+const burger = document.querySelector('.fav-toggler');
 const allJokes = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-    listenHearts(hearts)
+    let joke;
+    for (let key in localStorage) {
+        joke = JSON.parse(localStorage.getItem(key));
+        if(joke) {
+            renderJoke(joke, '-fav');
+        }
+    }
+    listenHearts(hearts);
 });
 
 async function getRandomJoke() {
-    const res = await fetch (
-        'https://api.chucknorris.io/jokes/random'
-    );
-    return await res.json();
+    try {
+        const res = await fetch (
+            'https://api.chucknorris.io/jokes/random'
+        );
+        return await res.json();
+    }
+    catch (e) {
+        console.log(e)
+    }
+
 }
 
 async function getJokeByCategory(category) {
-    category = category.replace(/^category-([a-z]+)$/, '$1');
-    const res = await fetch (
-        `https://api.chucknorris.io/jokes/random?category=${category}`
-    );
-    return await res.json();
+    try {
+        category = category.replace(/^category-([a-z]+)$/, '$1');
+        const res = await fetch (
+            `https://api.chucknorris.io/jokes/random?category=${category}`
+        );
+        return await res.json();
+    }
+    catch (e) {
+        console.log(e)
+    }
+
 }
 
 async function getJokeByQuery(query) {
-    const res = await fetch (
-        `https://api.chucknorris.io/jokes/search?query=${query}`
-    );
-    // debugger
-    const jokes = await res.json();
-    const i = Math.floor(Math.random() * jokes.total);
-    return jokes.result[i];
+    try {
+        const res = await fetch (
+            `https://api.chucknorris.io/jokes/search?query=${query}`
+        );
+        const jokes = await res.json();
+        const i = Math.floor(Math.random() * jokes.total);
+        return jokes.result[i];
+    }
+    catch (e) {
+        console.log(e)
+    }
 }
 
 
@@ -70,8 +94,7 @@ function radioSwitcher(el) {
 
 function listenHearts(hearts) {
     hearts.forEach(heart => {
-        heart.addEventListener('click', () => {
-            debugger
+        heart.addEventListener('click', e => {
             let joke;
             const thisID = heart.parentNode.querySelector('a').textContent.trim();
             for (let i = 0; i < allJokes.length; i++) {
@@ -80,15 +103,20 @@ function listenHearts(hearts) {
                     break;
                 }
             }
-            // if(heart.classList.contains('fa-heart')) {
-            //
-            // }
             heart.classList.toggle('fas');
             if(heart.classList.contains('fas')) {
-                renderJoke(joke, '-fav')
+                renderJoke(joke, '-fav');
             }
             else {
-
+                localStorage.removeItem(thisID);
+                const tmp = `#${thisID}-fav`;
+                document.querySelector(`#j${thisID}-fav`).remove();
+                // console.log(tmp)
+                // tmp.remove();
+                if(e.target.parentNode.id === `j${thisID}-fav`) {
+                    document.querySelector(`#j${thisID}`)
+                        .firstElementChild.classList.toggle('fas');
+                }
             }
         })
     });
@@ -96,14 +124,18 @@ function listenHearts(hearts) {
 
 function renderJoke(joke, fav = '') {
     const { categories, id, updated_at, url, value} = joke;
+
     const parseDate = updated_at.replace(/(\.\d*)/g, '');
     let update = Math.floor((Date.now() - Date.parse(parseDate))/3600/1000);
     update = update[update.length - 1] === '1'? `${update} hour` : `${update} hours`;
+
     const jokeList = document.querySelector(`.joke-list${fav}`);
     const jokeCard = document.createElement('div');
+
     jokeCard.classList.add('joke-card', `joke-card${fav}`);
+    jokeCard.id = 'j' + id + fav;
     jokeCard.innerHTML = `
-    <i class="far fa-heart joke-heart${fav}"></i>
+    <i class="far ${fav? 'fas':''} fa-heart joke-heart${fav}"></i>
     <div class="joke-content__img joke-message${fav}">
         <img src="./assets/icons/message.svg" alt="message">
     </div>
@@ -120,12 +152,13 @@ function renderJoke(joke, fav = '') {
             </p>
         </div>
         <div class="joke-card__footer">
-            <h5>Last update: ${update} ago</h5>
-            <h5 ${categories[0] ? '':'class="display-none"'}>${categories[0]}</h5>
+            <h5 class="joke-card__updated">Last update: <span>${update} ago<span></h5>
+            <h5 class="joke-card__category${categories[0] && !fav ? '':' display-none'}">${categories[0]}</h5>
         </div>
     </div>
     `;
     jokeList.prepend(jokeCard);
+
     if(fav) {
         localStorage.setItem(id, JSON.stringify(joke));
     }
@@ -142,22 +175,31 @@ radioMain.forEach(radio => radioSwitcher(radio));
 
 category.forEach(category => radioSwitcher(category));
 
-getJokeBtn.addEventListener('click', async function() {
-    const radioChecked = document.querySelector('input[name=radio-main][checked]');
-    const categoryChecked = document.querySelector('input[name=radio-category][checked]');
-    const searchQuery = document.querySelector('input[name=search-query]');
-    let joke;
-    switch (radioChecked.id) {
-        case 'radio-random':
-            joke = await getRandomJoke();
-            break;
-        case 'radio-category':
-            joke = await getJokeByCategory(categoryChecked.id);
-            break;
-        case 'radio-query':
-            joke = await getJokeByQuery(searchQuery.value);
-            break;
+getJokeBtn.addEventListener('click', async () => {
+    try {
+        const radioChecked = document.querySelector('input[name=radio-main][checked]');
+        const categoryChecked = document.querySelector('input[name=radio-category][checked]');
+        const searchQuery = document.querySelector('input[name=search-query]');
+        let joke;
+        switch (radioChecked.id) {
+            case 'radio-random':
+                joke = await getRandomJoke();
+                break;
+            case 'radio-category':
+                joke = await getJokeByCategory(categoryChecked.id);
+                break;
+            case 'radio-query':
+                joke = await getJokeByQuery(searchQuery.value);
+                break;
+        }
+        renderJoke(joke);
+    }catch (e) {
+        console.log(e)
     }
-    renderJoke(joke);
 });
 
+burger.addEventListener('click', () => {
+    burger.firstElementChild.classList.toggle('burger-active');
+    document.querySelector('.favourite')
+        .classList.toggle('active');
+});

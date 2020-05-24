@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MSI2020 test</title>
     <link rel="stylesheet" href="./node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="styles/styles.css">
@@ -10,7 +11,16 @@
 <body>
 <main class="wrapper">
     <section class="find-jokes">
-        <h1 class="find-jokes__header">MSI2020</h1>
+        <div class="find-jokes__header">
+            <h1 class="find-jokes__main-title">MSI2020</h1>
+            <div class="fav-toggler">
+                <div class="fav-toggler__icon">
+                    <div class="fav-toggler__icon-content" id="horiz1"></div>
+<!--                    <div class="fav-toggler__icon-content" id="horiz2"></div>-->
+                </div>
+                <span class="fav-toggler__text">Favourite</span>
+            </div>
+        </div>
         <h2 class="find-jokes__title">Hey!</h2>
         <h3 class="find-jokes__subtitle">Let’s try to find a joke for you:</h3>
         <div class="find-jokes__radio radio-main">
@@ -48,53 +58,34 @@
             <input type="button" value="Get a joke" id="get-joke" class="radio-main__btn">
         </div>
         <div class="joke-list">
-<!--            <div class="joke-card">-->
-<!--                <i class="far fa-heart"></i>-->
-<!--                <div class="joke-content__img">-->
-<!--                    <img src="./assets/icons/message.svg" alt="message">-->
-<!--                </div>-->
-<!--                <div class="joke-card__main joke-content">-->
-<!--                    <div class="joke-content__content">-->
-<!--                    <span class="joke-content__link">-->
-<!--                        ID:-->
-<!--                        <a href="">-->
-<!--                            XNaAxUduSw6zANDaIEab7A <i class="fas fa-external-link-alt"></i>-->
-<!--                        </a>-->
-<!--                    </span>-->
-<!--                        <p class="joke-content__text">-->
-<!--                            No one truly knows who's Chuck Norris' real father. No one is biologically strong enough for this. He must've conceived himself.-->
-<!--                        </p>-->
-<!--                    </div>-->
-<!--                    <div class="joke-card__footer">-->
-<!--                        <h5>Last update: 1923 hours ago</h5>-->
-<!--                        <h5>celebrity</h5>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div class="joke-card" id="jqrp-JCp5SDqqdc8Iwg1qHg">
+                <i class="far  fa-heart joke-heart" aria-hidden="true"></i>
+                <div class="joke-content__img joke-message">
+                    <img src="./assets/icons/message.svg" alt="message">
+                </div>
+                <div class="joke-card__main joke-content">
+                    <div class="joke-content__content">
+        <span class="joke-content__link">
+            ID:
+            <a href="https://api.chucknorris.io/jokes/qrp-JCp5SDqqdc8Iwg1qHg">
+                qrp-JCp5SDqqdc8Iwg1qHg <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+        </span>
+                        <p class="joke-content__text">
+                            Hilter died the day after Chuck Norris was born. Coincidence... i think not.
+                        </p>
+                    </div>
+                    <div class="joke-card__footer">
+                        <h5>Last update: 3356 hours ago</h5>
+                        <h5 class="display-none">undefined</h5>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <section class="favourite">
         <h2 class="favourite__header">Favourite</h2>
         <div class="joke-list-fav">
-<!--            <div class="joke-card joke-card-fav">-->
-<!--                <i class="far fa-heart joke-heart-fav"></i>-->
-<!--                <div class="joke-content__img joke-message-fav">-->
-<!--                    <img src="./assets/icons/message.svg" alt="message">-->
-<!--                </div>-->
-<!--                <div class="joke-card__main joke-content">-->
-<!--                    <div class="joke-content__content">-->
-<!--                    <span class="joke-content__link">-->
-<!--                        ID: <a href="">XNaAxUduSw6zANDaIEab7A <i class="fas fa-external-link-alt"></i></a>-->
-<!--                    </span>-->
-<!--                        <p class="joke-content__text-fav">-->
-<!--                            No one truly knows who's Chuck Norris' real father. No one is biologically strong enough for this. He must've conceived himself.-->
-<!--                        </p>-->
-<!--                    </div>-->
-<!--                    <div class="joke-card__footer">-->
-<!--                        <h5>Last update: 1923 hours ago</h5>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
     </section>
 </main>
